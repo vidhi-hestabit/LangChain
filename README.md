@@ -513,7 +513,9 @@ Runnables type :
 ## RunnableSequence :
 
 ![alt text](image-16.png)
+
 -------------------------------------------------------
+
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -539,12 +541,15 @@ prompt2 = PromptTemplate(
 chain = RunnableSequence(prompt1, model, parser, prompt2, model, parser)
 
 print(chain.invoke({'topic':'AI'}))
+
 -------------------------------------------------------
 
 ### RunnableParallel :
 
 ![alt text](image-17.png)
+
 -------------------------------------------------------
+
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -576,6 +581,7 @@ result = parallel_chain.invoke({'topic':'AI'})
 
 print(result['tweet'])
 print(result['linkedin'])
+
 -------------------------------------------------------
 
 ### RunnablePassThrough
@@ -621,6 +627,7 @@ parallel_chain = RunnableParallel({
 final_chain = RunnableSequence(joke_gen_chain, parallel_chain)
 
 print(final_chain.invoke({'topic':'cricket'}))
+
 -------------------------------------------------------
 
 
@@ -665,6 +672,7 @@ result = final_chain.invoke({'topic':'AI'})
 final_result = """{} \n word count - {}""".format(result['joke'], result['word_count'])
 
 print(final_result)
+
 -------------------------------------------------------
 
 
@@ -708,6 +716,7 @@ branch_chain = RunnableBranch(
 final_chain = RunnableSequence(report_gen_chain, branch_chain)
 
 print(final_chain.invoke({'topic':'Russia vs Ukraine'}))
+
 -------------------------------------------------------
 
 declarative way -- Might come!!
